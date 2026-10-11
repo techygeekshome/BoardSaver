@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Board Saver</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="results.css">
+</head>
+<body>
+<header>
+  <div class="brand">Board Saver</div>
+  <h1 id="board">Loading...</h1>
+  <div id="stats" class="stats"></div>
+  <div class="bar"><div id="bar"></div></div>
+</header>
+
+<section id="help" class="help" hidden>
+  <h2>How to use</h2>
+  <p>Open any Pinterest board (or a section of a board) in this browser, let it load, then click the Board Saver icon in the toolbar.</p>
+</section>
+
+<section id="controls" class="controls" hidden>
+  <label>Minimum size
+    <select id="minSide">
+      <option value="0">Any size</option>
+      <option value="500">500px+</option>
+      <option value="800">800px+</option>
+      <option value="1000">1000px+</option>
+      <option value="1500">1500px+</option>
+      <option value="2000">2000px+</option>
+    </select>
+  </label>
+  <label class="tog"><input type="checkbox" id="nearDup"> Remove near-duplicates</label>
+  <label class="tog" id="videosWrap" hidden><input type="checkbox" id="videos"> Include videos (<span id="videoCount">0</span>)</label>
+  <label class="tog"><input type="checkbox" id="csv"> Include pin list (CSV)</label>
+  <label class="tog"><input type="checkbox" id="showRemoved"> Show removed</label>
+  <span class="spacer"></span>
+  <button id="all" class="ghost">Select all</button>
+  <button id="none" class="ghost">Select none</button>
+  <button id="retry" class="ghost" hidden>Retry failed</button>
+  <button id="dl" class="primary" disabled>Download ZIP</button>
+</section>
+
+<main id="grid" class="grid"></main>
+
+<script src="zip.js"></script>
+<script src="results.js"></script>
+</body>
+</html>
