@@ -107,10 +107,12 @@
   }
 
   // ---------- Method 1: Pinterest's own web API (fast, complete) ----------
+  // Firefox content scripts must use content.fetch to send the request as the page would.
+  const pageFetch = (typeof content !== 'undefined' && content && typeof content.fetch === 'function') ? content.fetch.bind(content) : fetch;
   async function resource(name, options) {
     const data = JSON.stringify({ options, context: {} });
     const url = `/resource/${name}/get/?source_url=${encodeURIComponent(location.pathname)}&data=${encodeURIComponent(data)}&_=${Date.now()}`;
-    const r = await fetch(url, {
+    const r = await pageFetch(url, {
       credentials: 'include',
       headers: {
         Accept: 'application/json, text/javascript, */*; q=0.01',

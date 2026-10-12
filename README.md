@@ -17,12 +17,35 @@ Save every image on a Pinterest board in one go, at the best quality Pinterest h
 
 ## Install
 
-Works in Chrome, Edge, Brave, Opera and Vivaldi.
+Pick the download for your browser from the [latest release](https://github.com/techygeekshome/BoardSaver/releases/latest).
 
-1. Download `BoardSaver.zip` from the [latest release](https://github.com/techygeekshome/BoardSaver/releases/latest) and unzip it somewhere you'll keep it.
+| Browser | Download | Store listing |
+|---|---|---|
+| Chrome, Brave, Opera, Vivaldi | `BoardSaver-chrome.zip` | Not listed |
+| Microsoft Edge | `BoardSaver-edge.zip` | Edge Add-ons, in review |
+| Firefox | `BoardSaver-firefox.zip` | Firefox Add-ons, awaiting review |
+
+`BoardSaver.zip` is the same package as the Chrome and Edge downloads.
+
+### Chrome, Edge, Brave, Opera and Vivaldi
+
+1. Unzip the download somewhere you'll keep it.
 2. Open `chrome://extensions` (or `edge://extensions`).
 3. Turn on **Developer mode**.
 4. Click **Load unpacked** and pick the `board-saver` folder.
+
+### Firefox
+
+Board Saver is waiting for review on Firefox Add-ons, and that will be the easiest way to install it. Until then you can try it for the current session:
+
+1. Open `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on** and pick `BoardSaver-firefox.zip`.
+
+Firefox removes temporary add-ons when it closes. Needs Firefox 142 or newer.
+
+### Build it yourself
+
+The code in this repo is the Chromium version. `manifest.firefox.json` is the Firefox manifest. Run `./build.sh` to make every package in `dist/`.
 
 ## Use
 

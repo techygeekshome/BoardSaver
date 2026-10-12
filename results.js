@@ -191,7 +191,18 @@ async function loadItem(it) {
     bmp.close();
     // Shrink in two steps (256px, then a 32x32 average) so a big copy and a small
     // copy of the same picture end up with almost identical fingerprints.
-    const small = await createImageBitmap(it.blob, { resizeWidth: 256, resizeHeight: 256, resizeQuality: 'high' });
+    let small;
+    try {
+      small = await createImageBitmap(it.blob, { resizeWidth: 256, resizeHeight: 256, resizeQuality: 'high' });
+    } catch (e) {
+      const full = await createImageBitmap(it.blob);
+      const c = new OffscreenCanvas(256, 256);
+      const cx = c.getContext('2d');
+      cx.imageSmoothingQuality = 'high';
+      cx.drawImage(full, 0, 0, 256, 256);
+      full.close();
+      small = await createImageBitmap(c);
+    }
     it.hash = dhash(small);
     it.mini = miniGray(small);
     small.close();
